@@ -1,3 +1,4 @@
-<div>
-    <!-- I begin to speak only when I am certain what I will say is not better left unsaid. - Cato the Younger -->
-</div>
+<form action="{{ route('checkout.stripe', ['payment' => 'stripe']) }}" method="POST">
+    @csrf
+    <button class="btn btn-primary py-3 px-4" type="submit">Checkout</button>
+</form>
