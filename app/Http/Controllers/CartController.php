@@ -29,7 +29,7 @@ class CartController extends Controller
         // The amount of a product that is chosen by the user
         Cart::updateOrCreate(
             ['user_id' => Auth::id(), 'product_id' => $request->product_id],
-            ['quanity' => DB::raw('quantity +'.$request->quantity), 'updated' => now()]
+            ['quantity' => DB::raw('quantity +'.$request->quantity), 'updated_at' => now()]
         );
 
         // Sends user to the cart page
@@ -38,6 +38,7 @@ class CartController extends Controller
 
     public function destroy(string $id)
     {
+        // Remove product from the cart
         Cart::destroy($id);
 
         return redirect()->route('cart.index')->with('message', 'Product removed from cart');
@@ -48,7 +49,7 @@ class CartController extends Controller
         // The amount of a product that is chosen by the user
         Cart::updateOrCreate(
             ['user_id' => Auth::id(), 'product_id' => $request->id],
-            ['quanity' => DB::raw('quantity +'. 1), 'updated' => now()]
+            ['quantity' => DB::raw('quantity +'. 1), 'updated' => now()]
         );
 
         // Sends user to the cart page

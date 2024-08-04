@@ -12,6 +12,7 @@
             <p>{{ $data ->title }}</p>
             <p>${{ $data->getPrice() }}</p>
             <p><a href="{{ route('shop.details', ['id' => $data->id]) }}">View</a></p>
+            <p><a href="{{ route('cart.addfromstorepage', ['id' => $data->id]) }}">Add to Cart</a></p>
         </div>
         @endforeach
 
