@@ -1,10 +1,10 @@
 <x-mylayouts.layout-default>
 
+    <h1>Cart Page</h1>
+
     @if ($cart_data->isEmpty())
     <x-core.cart-empty />
     @else
-
-    <h1>Cart Page</h1>
 
     <div class="row">
 
@@ -35,6 +35,6 @@
 
     <br>
     <br>
-    
+
     @endif
 </x-mylayouts.layout-default>
