@@ -37,12 +37,28 @@ class StripeCheckout
 
     public function addProducts(Collection $products_data)
     {
-        return false;
+        $line_items = [];
+        foreach ($products_data as $data) {
+            $line_items[] = [
+                'price_data' => [
+                    'currency' => 'usd',
+                    'product_data' => [
+                        'name' => $data->title,
+                        'images' => ['https://img.freepik.com/free-photo/shopping-cart-front-side_187299-40118.jpg?w=826&t=st=1694476992~exp=1694477592~hmac=ed69117d05f541bbc1b719146a75df3ceba0afeef9797d4bafb4c4faaa90437d'],
+                    ],
+                    'unit_amount' => $data->getPrice() * 100,
+                ],
+                'quantity' => $data->pivot->quantity,
+            ];
+            $this->stripe_checkout_data['line_items'] = $line_items;
+        }
     }
 
     public function createSession()
     {
-        return false;
+        header('Content-Type: application/json');
+        $this->checkout_session = $this->stripe->checkout->sessions->create($this->stripe_checkout_data);
+        header('HTTP/1.1 303 See Other');
     }
 
     public function getUrl()
@@ -76,7 +92,11 @@ class StripeCheckout
 
     public function addShippingOptions(Collection $shipping_data)
     {
-        return false;
+        $shipping_options = [];
+        foreach ($shipping_data as $data) {
+            $shipping_options[] = ['shipping_rate' => $data->stripe_id];
+        }
+        $this->stripe_checkout_data['shipping_options'] = $shipping_options;
     }
 
     /**
@@ -97,11 +117,18 @@ class StripeCheckout
      */
     public function getOrderCreateData()
     {
-        return false;
+        return [
+            'payment_provider' => 'stripe',
+            'payment_id' => $this->checkout_session->id,
+        ];
     }
 
     public function getOrderCompletedData($checkout_session)
     {
-        return false;
+        return [
+            'subtotal' => $checkout_session->amount_subtotal / 100,
+            'total' => $checkout_session->amount_total / 100,
+            'shipping_id' => 1,
+        ];
     }
 } // end Class
