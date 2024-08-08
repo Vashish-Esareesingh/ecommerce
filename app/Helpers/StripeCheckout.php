@@ -27,7 +27,12 @@ class StripeCheckout
      */
     public function startCheckoutSession()
     {
-        return false;
+        $YOUR_DOMAIN = url('');
+        $this->stripe_checkout_data = [
+            'mode' => 'payment',
+            'success_url' => $YOUR_DOMAIN.'/checkout/success'.self::URL_ID,
+            'cancel_url' => $YOUR_DOMAIN.'/checkout',
+        ];
     }
 
     public function addProducts(Collection $products_data)
@@ -50,7 +55,7 @@ class StripeCheckout
      */
     public function addEmail($email)
     {
-        return false;
+        $this->stripe_checkout_data['customer_email'] = $email;
     }
 
     public function addCoupon()
@@ -60,7 +65,13 @@ class StripeCheckout
 
     public function enablePromoCodes()
     {
-        return false;
+        if ($this->coupon_used) {
+            return false;
+        }
+
+        $this->stripe_checkout_data['allow_promotion_codes'] = true;
+
+        return true;
     }
 
     public function addShippingOptions(Collection $shipping_data)
@@ -73,12 +84,12 @@ class StripeCheckout
      */
     public function getCheckoutOrder($session_id)
     {
-        return false;
+        return $this->stripe->checkout->sessions->retrieve($session_id, []);
     }
 
     public function isCheckoutCompleted($checkout_session)
     {
-        return false;
+        return $checkout_session->status = 'complete' && $checkout_session->payment_status = 'paid';
     }
 
     /**

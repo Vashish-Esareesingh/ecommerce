@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Helpers\ShippingHelper;
 use App\Helpers\StripeCheckout;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CheckoutPaymentController extends Controller
 {
-    public function index()
+    public function index($payment)
     {
         // Get the currently authenticated user
         $user = Auth::user();
@@ -31,5 +33,60 @@ class CheckoutPaymentController extends Controller
         if ($cart_data->isEmpty()) {
             dd('Cart is empty');
         }
+
+        // Determine payment used
+        switch ($payment) {
+            case 'value':
+                // code...
+                break;
+
+            default:
+                // code...
+                $insert_data = [
+                    'payment_provider' => 'testing',
+                    'payment_id' => 'testing',
+                ];
+                $completed = true;
+                break;
+        }
+
+        // If payment was completed
+        if (!$completed && empty($insert_data)) {
+            dd('Payment incomplete or checkout data is missing');
+        }
+
+        // Insert values into the order table
+        $order->user_id = $user->id;
+        // Find code to generate random and unique characters
+        $order->order_no = 'ORD-2024-'.Str::random(6);
+        $order->subtotal = $cart_data->getSubtotal();
+        $order->total = $cart_data->getTotal();
+        $order->payment_provider = $insert_data['payment_provider'];
+        $order->payment_id = $insert_data['payment_id'];
+        $order->shipping_id = 1;
+        $order->shipping_address_id = 1;
+        $order->billing_address_id = 1;
+        $order->payment_status = 'unpaid';
+        $order->save();
+
+        $records = [];
+        // Loop through cart to make a record based on the data found to insert into OrderProduct table
+        foreach ($cart_data as $data) {
+            array_push($records,
+                new OrderProduct([
+                    'product_id' => $data->id,
+                    'user_id' => $user->id,
+                    'price' => $data->getPrice(),
+                    'quantity' => $data->pivot->quantity,
+                ]));
+        }
+
+        $order->order_products()->saveMany($records);
+
+        if ($payment == 'stripe') {
+            return redirect($stripe_checkout->getUrl());
+        }
+
+        dd('Payment successful during test');
     }
 }
