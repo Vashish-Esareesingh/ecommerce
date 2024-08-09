@@ -30,7 +30,7 @@ class StripeCheckout
         $YOUR_DOMAIN = url('');
         $this->stripe_checkout_data = [
             'mode' => 'payment',
-            'success_url' => $YOUR_DOMAIN.'/checkout/success'.self::URL_ID,
+            'success_url' => $YOUR_DOMAIN.'/checkout/success/'.self::URL_ID,
             'cancel_url' => $YOUR_DOMAIN.'/checkout',
         ];
     }
@@ -128,7 +128,7 @@ class StripeCheckout
         return [
             'subtotal' => $checkout_session->amount_subtotal / 100,
             'total' => $checkout_session->amount_total / 100,
-            'shipping_id' => 1,
+            'stripe_id' => $checkout_session->shipping_cost->shipping_rate,
         ];
     }
 } // end Class
