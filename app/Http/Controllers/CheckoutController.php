@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\PointsHelper;
 use App\Helpers\ShippingHelper;
+use App\Models\points\PointsDiscount;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -26,6 +28,9 @@ class CheckoutController extends Controller
         $shipping_helper = new ShippingHelper();
         $shipping_data = $shipping_helper->getGroupShippingOptions($group_ids);
 
-        return view('pages.testing.checkoutpage', compact('cart_data', 'shipping_data'));
+        $points_helper = new PointsHelper($cart_data->getSubtotal(), $user->total_points, $group_ids);
+        $discount_data = PointsDiscount::all();
+
+        return view('pages.default.checkoutpage', compact('cart_data', 'shipping_data', 'points_helper', 'discount_data'));
     }
 }
