@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,6 +52,18 @@ class User extends Authenticatable
         $group_ids = [1];
 
         return $group_ids;
+    }
+
+    public function scopeSubtractPoints(Builder $query, int $user_id, int $points = 0)
+    {
+        $query->where('id', $user_id)
+        ->decrement('total_points', $points);
+    }
+
+    public function scopeAddPoints(Builder $query, int $user_id, int $points = 0)
+    {
+        $query->where('id', $user_id)
+        ->increment('total_points', $points);
     }
 
     /**

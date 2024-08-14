@@ -25,7 +25,7 @@
                                     <div class="select-wrap">
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                         <select name="" id="" class="form-control">
-                                            <option value="">France</option>
+                                            <option value="">Trinidad</option>
                                             <option value="">Italy</option>
                                             <option value="">Philippines</option>
                                             <option value="">South Korea</option>
@@ -90,7 +90,7 @@
                     {{-- Points --}}
                     @include("pages.additional.points.points-exchange-default")
 
-                    {{-- Order Details --}}
+                    {{-- Checkout Details --}}
                     <div class="row mt-5 pt-3 d-flex">
                         <div class="col-md-6 d-flex">
                             <div class="cart-detail cart-total bg-light p-3 p-md-4">
@@ -99,21 +99,33 @@
                                     <span>Subtotal</span>
                                     <span>${{ $cart_data->getSubtotal() }}</span>
                                 </p>
+                                @foreach ( $shipping_data as $data )
                                 <p class="d-flex">
-                                    <span>Delivery</span>
-                                    <span>$0.00</span>
+                                    <span>{{ $data->title }}</span>
+                                    <span>+${{ CustomHelper::formatPrice($data->price) }}</span>
                                 </p>
-                                <p class="d-flex">
-                                    <span>Discount</span>
-                                    <span>$3.00</span>
-                                </p>
+                                @endforeach
                                 <hr>
                                 <p class="d-flex total-price">
-                                    <span>Total</span>
-                                    <span>${{ $cart_data->getTotal() }}</span>
+                                    <span>Estimate</span>
+
+
+                                    @if ($points_helper->isDiscountApplied())
+                                    <span>${{ CustomHelper::formatPrice($points_helper->calculateDiscountedPrice())
+                                        }}</span>
+                                    @else
+                                    <span>${{ CustomHelper::formatPrice($cart_data->getSubtotal()) }}</span>
+                                    @endif
+
                                 </p>
                             </div>
                         </div>
+
+
+
+
+
+
                         <div class="col-md-6">
                             <div class="cart-detail bg-light p-3 p-md-4">
                                 <h3 class="billing-heading mb-4">Payment Method</h3>

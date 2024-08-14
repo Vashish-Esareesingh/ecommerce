@@ -10,6 +10,8 @@ class StripeCheckoutSuccess
 {
     protected $stripe;
 
+    public $points_gained = 0;
+
     public function __construct()
     {
         $this->stripe = StripeClient::getClient();
@@ -29,15 +31,19 @@ class StripeCheckoutSuccess
             return false;
         }
 
+        // Get stripe checkout session
         $session = $stripe_helper->getCheckoutOrder($session_id);
 
         $user_id = $order->user_id;
         $user = User::findOrFail($user_id);
         $group_ids = $user->getGroups();
 
-        // Get data from Stripe
+        // Get data needed from Stripe checkout to update order in database
         $order_completed_data = $stripe_helper->getOrderCompletedData($session);
 
+        $this->points_gained = $order->points_gained;
+
+        // Check if Order is unpaid to start the process in finalizing an order
         if ($order && $order->payment_status == 'unpaid') {
             // Get selected shipping from database
             $shipping_id = Shipping::where('stripe_id', $order_completed_data['stripe_id'])
@@ -49,12 +55,32 @@ class StripeCheckoutSuccess
             $order->subtotal = $order_completed_data['subtotal'];
             $order->total = $order_completed_data['total'];
             $order->shipping_id = $shipping_id;
+
+            // Finalize order
             $order->payment_status = 'paid';
+
+            if (!$this->updatePoints($order, $user)) {
+                return false;
+            }
             $order->save();
 
             // Remove items from the cart
             $user->products()->detach();
         }
+
+        return true;
+    }
+
+    public function updatePoints(Order $order, User $user)
+    {
+        if ($order->points_exchanged > $user->total_points) {
+            return false;
+        }
+
+        $this->points_gained = $order->points_gained;
+        User::subtractPoints($user->id, $order->points_exchanged)->get();
+        User::addPoints($user->id, $order->points_gained)->get();
+        PointsHelper::clearPointsSession();
 
         return true;
     }
