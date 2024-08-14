@@ -14,6 +14,9 @@ class CheckoutPaymentController extends Controller
 {
     public function index($payment)
     {
+        // to see whether a user is authenticated and what group they belong to
+        $group_ids = Auth::check() ? Auth::user()->getGroups() : [1];
+
         // Get the currently authenticated user
         $user = Auth::user();
 
@@ -41,6 +44,7 @@ class CheckoutPaymentController extends Controller
                 $stripe_checkout->startCheckoutSession();
                 $stripe_checkout->addEmail($user->email);
                 $stripe_checkout->addProducts($cart_data);
+                $stripe_checkout->addPointsCoupon();
                 $stripe_checkout->enablePromoCodes();
                 $shipping_data = $shipping_helper->getGroupShippingOptions();
                 $stripe_checkout->addShippingOptions($shipping_data);

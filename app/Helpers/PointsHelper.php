@@ -18,7 +18,7 @@ class PointsHelper
     public array $group_ids = [1];
     public string $group_title = '';
 
-    // Once data is passed from the constructor, it is stored in the PointsHelper
+    // Once data is passed from the constructor, store in the PointsHelper
     public function __construct($cart_total, $user_points, $group_ids = [1])
     {
         $this->total = $cart_total;
