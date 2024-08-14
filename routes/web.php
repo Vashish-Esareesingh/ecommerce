@@ -5,6 +5,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CheckoutPaymentController;
 use App\Http\Controllers\CheckoutSuccessController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,11 +46,21 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
+    // Route to exchange points
     Route::post('/checkout/points', [CheckoutController::class, 'points'])->name('checkout.points');
 
+    // Route for stripe checkout
     Route::post('/checkout/payment/{payment}/1', [CheckoutPaymentController::class, 'index'])->name('checkout.stripe');
 
+    // Route for testing checkout without stripe
     Route::get('/checkout/{payment}/testing', [CheckoutPaymentController::class, 'index'])->name('checkout.success.testing');
 
+    // Route for checkout success with stripe
     Route::get('/checkout/success/{id}', [CheckoutSuccessController::class, 'index'])->name('checkout.success');
+
+    // Route to show all orders placed
+    Route::get('/order-history', [OrderHistoryController::class, 'index'])->name('order-history.index');
+
+    // Route to show details for an order
+    Route::get('/order-history/{id}', [OrderHistoryController::class, 'show'])->name('order-history.show');
 });

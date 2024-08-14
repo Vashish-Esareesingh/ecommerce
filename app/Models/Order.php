@@ -14,7 +14,7 @@ class Order extends Model
     /**
      * The products that belong to the Order.
      */
-    public function roles(): BelongsToMany
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'order_products')
         ->withPivot('id', 'product_id', 'user_id', 'price', 'quantity')
@@ -28,5 +28,11 @@ class Order extends Model
     public function order_products(): HasMany
     {
         return $this->hasMany(OrderProduct::class, 'order_id');
+    }
+
+    // Only show paid orders
+    public function scopePaidOrders($query, $status = 'paid')
+    {
+        $query->where('payment_status', $status);
     }
 }
