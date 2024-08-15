@@ -67,4 +67,11 @@ class Product extends Model
     {
         return $this->getPrice() * $this->pivot->quantity;
     }
+
+    public function getLink()
+    {
+        return route('shop.details', ['id' => $this->id]);
+        // or use 'shop.details' if that is preferred:
+        // return route('shop.details', ['id' => $this->id]);
+    }
 }

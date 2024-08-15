@@ -32,7 +32,7 @@ class CheckoutController extends Controller
         $points_helper = new PointsHelper($cart_data->getSubtotal(), $user->total_points, $group_ids);
         $discount_data = PointsDiscount::all();
 
-        return view('pages.default.checkoutpage',
+        return view('pages.testing.checkoutpage',
             compact('cart_data', 'shipping_data', 'points_helper', 'discount_data')
         );
     }
