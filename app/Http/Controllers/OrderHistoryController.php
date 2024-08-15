@@ -17,7 +17,7 @@ class OrderHistoryController extends Controller
         ->get()
         ;
 
-        return view('orders.order-history');
+        return view('orders.order-history', compact('order_data'));
     }
 
     public function show(string $id)

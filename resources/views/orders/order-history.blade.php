@@ -37,7 +37,7 @@
                             <td>${{ $order->total }}</td>
                             <td>
                                 <a class="btn btn-primary"
-                                    href="{{ route('order-history.show', ['id' =>$order_id]) }}">Details</a>
+                                    href="{{ route('order-history.show', ['id' =>$order->id]) }}">Details</a>
                             </td>
                         </tr>
 
