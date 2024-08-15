@@ -1,7 +1,7 @@
 <x-mylayouts.layout-default>
 
 
-    <h1>Store Page</h1>
+    <h1>Details Page</h1>
 
     <div class="row">
 
