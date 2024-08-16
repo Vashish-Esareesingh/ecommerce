@@ -26,7 +26,6 @@ Route::view('/testing/store', 'pages/testing/productspage');
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 
 Route::get('/store', [ProductController::class, 'index'])->name('store.index');
