@@ -1,11 +1,19 @@
 <x-mylayouts.layout-default>
 
+    @if ($product_data->isEmpty())
+    <x-core.products-empty />
+
+    @else
 
     <section class="ftco-section bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-lg-10 order-md-last">
                     <div class="row">
+
+
+                        <x-core.products-search />
+                        <x-core.products-filter />
 
 
                         @foreach ($product_data as $data)
@@ -70,32 +78,23 @@
 
                 <div class="col-md-4 col-lg-2 sidebar">
                     <div class="sidebar-box-2">
-                        <h2 class="heading mb-4"><a href="#">Clothing</a></h2>
+                        <h2 class="heading mb-4"><a href="#">Categories</a></h2>
                         <ul>
-                            <li><a href="#">Shirts &amp; Tops</a></li>
-                            <li><a href="#">Dresses</a></li>
-                            <li><a href="#">Shorts &amp; Skirts</a></li>
-                            <li><a href="#">Jackets</a></li>
-                            <li><a href="#">Coats</a></li>
-                            <li><a href="#">Sleeveless</a></li>
-                            <li><a href="#">Trousers</a></li>
-                            <li><a href="#">Winter Coats</a></li>
-                            <li><a href="#">Jumpsuits</a></li>
+                            @foreach ($category_data as $category)
+                            <li><a href="{{ route('store.index', ['category' =>$category]) }}">{{ $category }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
+
                     <div class="sidebar-box-2">
-                        <h2 class="heading mb-4"><a href="#">Jeans</a></h2>
+                        <h2 class="heading mb-4"><a href="#">Sort</a></h2>
                         <ul>
-                            <li><a href="#">Shirts &amp; Tops</a></li>
-                            <li><a href="#">Dresses</a></li>
-                            <li><a href="#">Shorts &amp; Skirts</a></li>
-                            <li><a href="#">Jackets</a></li>
-                            <li><a href="#">Coats</a></li>
-                            <li><a href="#">Jeans</a></li>
-                            <li><a href="#">Sleeveless</a></li>
-                            <li><a href="#">Trousers</a></li>
-                            <li><a href="#">Winter Coats</a></li>
-                            <li><a href="#">Jumpsuits</a></li>
+                            <li><a href="{{ route('store.index', ['sort' => 'category']) }}">Category</a></li>
+                            <li><a href="{{ route('store.index', ['sort' => 'price_asc']) }}">Price (Low to High)</a>
+                            </li>
+                            <li><a href="{{ route('store.index', ['sort' => 'price_desc']) }}">Price (High to Low)</a>
+                            </li>
+
                         </ul>
                     </div>
                     <div class="sidebar-box-2">
@@ -117,5 +116,6 @@
             </div>
         </div>
     </section>
+    @endif
 
 </x-mylayouts.layout-default>
