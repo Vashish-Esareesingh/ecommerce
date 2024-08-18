@@ -27,6 +27,6 @@ class ProductController extends Controller
         // Returns data to views/ productspage
         // return view('pages.default.productspage', compact('product_data'));
 
-        return view('pages.testing.productspage', compact('product_data', 'category_data'));
+        return view('pages.default.productspage', compact('product_data', 'category_data'));
     }
 }

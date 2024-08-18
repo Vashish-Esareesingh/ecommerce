@@ -19,7 +19,7 @@ class DetailController extends Controller
         // recommended products based on orders
         $recommendedProducts = $this->recommendedProducts($id);
 
-        return view('pages.testing.detailspage', compact('data', 'recommendedProducts'));
+        return view('pages.default.detailspage', compact('data', 'recommendedProducts'));
     }
 
     // Recommended Products based or order products

@@ -21,7 +21,7 @@ class CartController extends Controller
         $cart_data->calculateSubtotal();
 
         // Load page
-        return view('pages.testing.cartpage', compact('cart_data'));
+        return view('pages.default.cartpage', compact('cart_data'));
     }
 
     public function store(Request $request)
