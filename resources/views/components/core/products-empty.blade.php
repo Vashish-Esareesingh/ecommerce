@@ -5,5 +5,4 @@
         <p>Try viewing all products for try another search</p>
         <p><a href="{{ route('store.index') }}">View all products</a></p>
     </div>
-
 </div>
