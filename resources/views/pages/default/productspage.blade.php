@@ -1,4 +1,8 @@
 <x-mylayouts.layout-custom>
+    @if ($product_data->isEmpty())
+    <x-core.products-empty />
+
+    @else
 
     <div class="container">
         <div class="row">
@@ -14,13 +18,13 @@
 
 
 
-                <x-core.products-search />
-                <x-core.products-filter />
+
 
                 {{-- Product --}}
                 <div class="products mb-3">
                     <div class="row justify-content-center">
-
+                        <x-core.products-search />
+                        <x-core.products-filter />
                         @foreach ($product_data as $data)
 
 
@@ -161,5 +165,6 @@
             </aside><!-- End .col-lg-3 -->
         </div><!-- End .row -->
     </div><!-- End .container -->
+    @endif
 
 </x-mylayouts.layout-custom>
