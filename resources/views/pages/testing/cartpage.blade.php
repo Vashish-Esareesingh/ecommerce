@@ -31,7 +31,7 @@
                                 <tr class="text-center">
                                     <td class="product-remove">
 
-
+                                        {{-- Remove from Cart --}}
                                         <form action="{{ route('cart.destroy', ['id' => $data->pivot->id]) }}"
                                             method="POST">
                                             @method('DELETE')

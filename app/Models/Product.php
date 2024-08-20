@@ -74,4 +74,5 @@ class Product extends Model
         // or use 'shop.details' if that is preferred:
         // return route('shop.details', ['id' => $this->id]);
     }
+
 }
