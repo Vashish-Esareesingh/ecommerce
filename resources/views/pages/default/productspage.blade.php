@@ -50,12 +50,12 @@
 
                                 <div class="product-body">
                                     <div class="product-cat">
-                                        <a href="#">Women</a>
+                                        <a href="#">{{ $data->category }}</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="{{ $data->getLink() }}">{{ $data->title }}">{{
-                                            $data->title }}</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{{ $data->getLink() }}">{{ $data->title }}</a>
+                                    </h3><!-- End .product-title -->
                                     <div class="product-price">
-                                        $60.00
+                                        {{ $data->getPrice() }}
                                     </div><!-- End .product-price -->
                                     <div class="ratings-container">
                                         <div class="ratings">
