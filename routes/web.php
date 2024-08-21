@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckoutSuccessController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\reviews\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,10 @@ Route::get('/details/{id}', [DetailController::class, 'index'])->name('store.det
 Route::get('/details/{id}', [DetailController::class, 'index'])->name('shop.details');
 
 Route::middleware(['auth'])->group(function () {
+    // Route to manage product reviews
+    // Source: https://laravel.com/docs/10.x/controllers#shallow-nesting
+    Route::resource('single-product.reviews', ReviewController::class)->shallow();
+
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
     Route::put('/cart', [CartController::class, 'store'])->name('cart.store');

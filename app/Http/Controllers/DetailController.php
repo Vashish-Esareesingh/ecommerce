@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\reviews\ReviewFilter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,26 @@ class DetailController extends Controller
         // recommended products based on orders
         $recommendedProducts = $this->recommendedProducts($id);
 
-        return view('pages.default.detailspage', compact('data', 'recommendedProducts'));
+        // Reviews and Ratings
+        $product = $data;
+
+        // Gets all Reviews for a specific product
+        $review_data = ReviewFilter::forProduct($id)
+        ->filterReviews([])
+        ->limit(4)
+        ->get();
+
+        // Gets the average
+        $average_rating = ReviewFilter::averageOnly($product->id);
+
+        // Get the amount of users who gave a specfic rating
+        $rating_data = ReviewFilter::calculateRatings($product->id);
+
+        // Get total reviews whether verified or not
+        $total_reviews = ReviewFilter::forProduct($product->id)->count();
+
+        return view('pages.default.detailspage',
+            compact('data', 'recommendedProducts', 'review_data', 'average_rating', 'rating_data', 'total_reviews'));
     }
 
     // Recommended Products based or order products
