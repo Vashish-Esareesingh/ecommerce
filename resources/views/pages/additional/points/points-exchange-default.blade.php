@@ -1,7 +1,6 @@
 <div class="card p-3 my-3">
 
-    <h4>Points</h4>
-    <hr>
+    <h3>Loyalty Points</h3>
     <p>Available Points: {{ $points_helper->getUserPoints() }}</p>
     <p>Points multiplier: x{{ $points_helper->getPoints()}}
         ({{
@@ -27,7 +26,7 @@
 
         <div class="form-group">
             <label for="points_exchanged">
-                <h5>Exchange Points</h5>
+                <th>Exchange Loyalty Points</th>
             </label>
             <select class="form-control" id="points_exchanged" name="points_exchanged">
                 <option>Select your discount</option>

@@ -24,6 +24,6 @@ class CheckoutSuccessController extends Controller
         }
 
         // If successful, send user to the checkout success page
-        return view('pages.testing.checkout-successpage', compact('points_gained'));
+        return view('pages.default.checkout-successpage', compact('points_gained'));
     }
 }
