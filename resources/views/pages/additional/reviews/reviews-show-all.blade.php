@@ -1,4 +1,4 @@
-<x-mylayouts.layout-default>
+<x-mylayouts.layout-custom>
 
 
     @foreach ($errors->all() as $error)
@@ -166,4 +166,4 @@
 
 
 
-</x-mylayouts.layout-default>
+</x-mylayouts.layout-custom>

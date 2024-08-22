@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\reviews;
 
+use App\Events\ReviewCreated;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReviewFilterRequest;
+use App\Models\Product;
 use App\Models\reviews\Review;
+use App\Models\reviews\ReviewFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +16,31 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($product_id, ReviewFilterRequest $request)
     {
+        // validate info
+        $validated = $request->validated();
+
+        // get product
+        $product = Product::findOrFail($product_id);
+
+        // get reviews
+        $review_data = ReviewFilter::forProduct($product_id)
+        ->filterReviews($validated)
+        ->paginate(4);
+
+        // get average rating
+        $average_rating = ReviewFilter::averageOnly($product->id);
+
+        // get rating with percentage
+        $rating_data = ReviewFilter::calculateRatings($product->id);
+
+        // Total reviews
+        $total_reviews = ReviewFilter::forProduct($product->id)->count();
+
+        // load page
+        return view('pages.additional.reviews.reviews-show-all',
+            compact('product', 'review_data', 'average_rating', 'rating_data', 'total_reviews'));
     }
 
     /**
@@ -45,7 +72,9 @@ class ReviewController extends Controller
         $review->description = $request->description;
         $review->save();
 
-        // TODO: TO DETERMINE IF REVIEW IS VERIFIED
+        // TO DETERMINE IF REVIEW IS VERIFIED
+        ReviewCreated::dispatch($review);
+
         return redirect()->route('shop.details', ['id' => $product_id]);
     }
 
@@ -71,6 +100,16 @@ class ReviewController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $review = Review::findOrFail($id);
+        $review->rating = $request->rating;
+        $review->title = $request->title;
+        $review->description = $request->description;
+        $review->save();
+
+        // TO DETERMINE IF REVIEW IS VERIFIED
+        ReviewCreated::dispatch($review);
+
+        return redirect()->route('shop.details', ['id' => $review->product_id]);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\ProductCollectionHelper;
+use App\Models\reviews\Review;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -35,7 +36,9 @@ class Product extends Model
 
     public function scopeWithPrices(Builder $query, array $group_ids = [1])
     {
-        $query->where('products.id', '>', 0);
+        $query->where('products.id', '>', 0)
+->withRatings()
+        ;
     }
 
     public function scopeSingleProduct(Builder $query, int $id)
@@ -75,4 +78,23 @@ class Product extends Model
         // return route('shop.details', ['id' => $this->id]);
     }
 
+    /**
+     * Get all of the reviews for the Product.
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'product_id');
+    }
+
+    public function scopeWithRatings(Builder $query)
+    {
+        $query->with('reviews')
+        ->withCount('reviews as total_reviews')
+        ->withAvg([
+            'reviews as average_rating' => function ($query) {
+                // $query->where('verified', 1);
+            },
+        ], 'rating')
+        ;
+    }
 }

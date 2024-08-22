@@ -1,16 +1,27 @@
 <x-mylayouts.layout-custom>
 
+    <main class="main">
+        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+            <div class="container">
+                <h1 class="page-title">Product Details<span></span></h1>
+            </div><!-- End .container -->
+        </div><!-- End .page-header -->
+    </main><!-- End .main -->
+
+
 
     <div class="page-content">
         <div class="container">
             <div class="product-details-top">
                 <div class="row">
                     <div class="col-md-6">
+                        <br>
                         <div class="product-gallery product-gallery-vertical">
                             <div class="row">
                                 <div class="col-lg-6 mb-5 ftco-animate">
                                     <a href="{{ $data->getImage() }}" class="image-popup"><img
-                                            src="{{ $data->getImage() }}" class="img-fluid" alt="PawtoPaw"></a>
+                                            src="{{ $data->getImage() }}" class="img-fluid" alt="PawtoPaw">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +53,8 @@
                                 <div class="details-filter-row details-row-size">
                                     <label for="qty">Qty:</label>
                                     <div class="product-details-quantity">
-                                        <input type="number" id="qty" name="quantity" class="form-control" value="1" min="1" max="100" required>
+                                        <input type="number" id="qty" name="quantity" class="form-control" value="1"
+                                            min="1" max="100" required>
                                         <input type="hidden" name="product_id" value="{{ $data->id }}">
                                     </div>
                                 </div>
@@ -50,7 +62,8 @@
                                 <div class="product-details-action">
                                     <button type="submit" class="btn-product btn-cart"><span>add to cart</span></button>
                                     <div class="details-action-wrapper">
-                                        <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
+                                        <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to
+                                                Wishlist</span></a>
                                     </div>
                                 </div>
                             </form>
@@ -85,7 +98,7 @@
                             role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
                     </li>
                 </ul>
-                
+
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel"
                         aria-labelledby="product-desc-link">

@@ -11,7 +11,7 @@ class ReviewFilterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class ReviewFilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'sort' => ['sometimes', 'string', 'min:2', 'max:50'],
+            'filter' => ['sometimes', 'string', 'min:2', 'max:50'],
+            'rating' => ['sometimes', 'numeric', 'integer'],
+            'body' => ['body message'],
         ];
     }
 }

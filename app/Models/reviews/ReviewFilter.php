@@ -16,7 +16,7 @@ class ReviewFilter extends Review
         $query->with('users')
 
         // Get verified reviews
-        ->verified($values['verified'] ?? false)
+        ->verified($values['verified'] ?? 'all')
 
         // Get specific ratings
         ->withRating($values['rating'] ?? 0)
@@ -31,9 +31,9 @@ class ReviewFilter extends Review
         $query->where('product_id', $id);
     }
 
-    public function scopeVerified($query, $verified = false)
+    public function scopeVerified($query, $verified = 'all')
     {
-        if ($verified) {
+        if ($verified == 'verified') {
             $query->where('verified', 1);
         }
     }

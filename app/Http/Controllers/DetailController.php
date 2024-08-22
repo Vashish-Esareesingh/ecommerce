@@ -38,6 +38,8 @@ class DetailController extends Controller
         // Get total reviews whether verified or not
         $total_reviews = ReviewFilter::forProduct($product->id)->count();
 
+        // dd($data);
+
         return view('pages.default.detailspage',
             compact('data', 'recommendedProducts', 'review_data', 'average_rating', 'rating_data', 'total_reviews'));
     }
