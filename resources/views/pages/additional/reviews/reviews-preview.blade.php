@@ -1,4 +1,5 @@
 @if ($review_data->isEmpty())
+@php($data = $product)
 
 @include('pages.additional.reviews.reviews-empty')
 
@@ -18,7 +19,7 @@
             </div>
 
             <p>Review this product</p>
-            <a href="{{ route('single-product.reviews.create', ['single_product' => $data->id]) }}">Write a customer
+            <a href="{{ route('single-product.reviews.create', ['single_product' => $product->id]) }}">Write a customer
                 review</a>
         </div>
         <div class="col-md-8">
@@ -50,7 +51,7 @@
 
 
                 <p class="text-center"><a
-                        href="{{ route('single-product.reviews.index', ['single_product' => $data->id]) }}">See more
+                        href="{{ route('single-product.reviews.index', ['single_product' => $product->id]) }}">See more
                         reviews</a></p>
             </div>
 

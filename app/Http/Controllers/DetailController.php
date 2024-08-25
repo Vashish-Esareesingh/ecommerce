@@ -41,7 +41,7 @@ class DetailController extends Controller
         // dd($data);
 
         return view('pages.default.detailspage',
-            compact('data', 'recommendedProducts', 'review_data', 'average_rating', 'rating_data', 'total_reviews'));
+            compact('data', 'recommendedProducts', 'review_data', 'average_rating', 'rating_data', 'total_reviews', 'product'));
     }
 
     // Recommended Products based or order products

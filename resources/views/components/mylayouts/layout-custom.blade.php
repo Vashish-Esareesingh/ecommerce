@@ -107,6 +107,35 @@
 
                                 </li>
 
+
+
+
+                                @auth
+
+                                <li>
+                                    <a href="{{ route('order-history.index') }}" class="sf-with-ul1">Orders</a>
+
+
+                                </li>
+
+
+                                <li>
+                                    <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+
+                                </li>
+
+                                @endauth
+
+                                @guest
+                                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
+                                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a></li>
+                                @endguest
+
+
                         </nav><!-- End .main-nav -->
                     </div><!-- End .header-left -->
 
@@ -125,8 +154,8 @@
 
                         {{-- Cart --}}
                         <div class="dropdown cart-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <a href="{{ route('cart.index') }}" class="dropdown-toggle" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <i class="icon-shopping-cart"></i>
                                 <span class="cart-count">
                                     <x-core.carticon />

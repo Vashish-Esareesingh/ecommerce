@@ -46,12 +46,17 @@ class ReviewController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($product_id)
+    public function create($product_id = -1)
     {
+
+        // dd($product_id);
         $review = Review::where('product_id', $product_id)
         ->where('user_id', Auth::id())
         ->latest()
         ->first();
+
+
+
         if ($review) {
             return redirect()->route('reviews.edit', ['review' => $review->id])->with('message', 'You can only post one review');
         }
