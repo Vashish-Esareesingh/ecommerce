@@ -64,7 +64,7 @@
                                     <h3 class="product-title"><a href="{{ $data->getLink() }}">{{ $data->title }}</a>
                                     </h3><!-- End .product-title -->
                                     <div class="product-price">
-                                        {{ $data->getPrice() }}
+                                        ${{ $data->getPrice() }}
                                     </div><!-- End .product-price -->
                                     <div class="ratings-container">
                                         <div class="ratings">

@@ -27,7 +27,7 @@ class HomeController extends Controller
         $recent = $this->recentProducts();
         $best_selling_products = $this->bestSellingProducts();
 
-        return view('pages.testing.homepage', [
+        return view('pages.default.homepage', [
             'random' => $random,
             'recent' => $recent,
             'best_selling_products' => $best_selling_products,

@@ -71,15 +71,12 @@
                             <li>
                                 <a href="#">Links</a>
                                 <ul>
-                                    <li><a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></li>
-                                    <li><a href="wishlist.html"><i class="icon-heart-o"></i>Wishlist
-                                            <span>(3)</span></a></li>
+                                    <li><a href="tel:#"><i class="icon-phone"></i>Call: +1-868-493-789</a></li>
                                     <li><a href="about.html">About Us</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a>
-                                    </li>
-                                </ul>
                             </li>
+                        </ul>
+                        </li>
                         </ul><!-- End .top-menu -->
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
@@ -132,7 +129,8 @@
 
                                 @guest
                                 <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
-                                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a></li>
+                                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a>
+                                </li>
                                 @endguest
 
 
@@ -179,27 +177,27 @@
 
         {{ $slot }}
 
-        <footer class="footer">
+        <footer class="footer footer-dark">
             <div class="footer-middle">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget widget-about">
-                                <img src="assets/images/logo.png" class="footer-logo" alt="Footer Logo" width="105"
-                                    height="25">
+                                <img src="assets/images/logo-footer.png" class="footer-logo" alt="Footer Logo"
+                                    width="105" height="25">
                                 <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
                                     magna eros eu erat. </p>
 
                                 <div class="social-icons">
-                                    <a href="#" class="social-icon" target="_blank" title="Facebook"><i
+                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i
                                             class="icon-facebook-f"></i></a>
-                                    <a href="#" class="social-icon" target="_blank" title="Twitter"><i
+                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i
                                             class="icon-twitter"></i></a>
-                                    <a href="#" class="social-icon" target="_blank" title="Instagram"><i
+                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i
                                             class="icon-instagram"></i></a>
-                                    <a href="#" class="social-icon" target="_blank" title="Youtube"><i
+                                    <a href="#" class="social-icon" title="Youtube" target="_blank"><i
                                             class="icon-youtube"></i></a>
-                                    <a href="#" class="social-icon" target="_blank" title="Pinterest"><i
+                                    <a href="#" class="social-icon" title="Pinterest" target="_blank"><i
                                             class="icon-pinterest"></i></a>
                                 </div><!-- End .soial-icons -->
                             </div><!-- End .widget about-widget -->
@@ -210,7 +208,8 @@
                                 <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
 
                                 <ul class="widget-list">
-                                    <li><a href="about.html">About Paw-to-Paw</a></li>
+                                    <li><a href="about.html">About Molla</a></li>
+                                    <li><a href="#">How to shop on Molla</a></li>
                                     <li><a href="#">FAQ</a></li>
                                     <li><a href="contact.html">Contact us</a></li>
                                     <li><a href="login.html">Log in</a></li>
@@ -224,6 +223,7 @@
 
                                 <ul class="widget-list">
                                     <li><a href="#">Payment Methods</a></li>
+                                    <li><a href="#">Money-back guarantee!</a></li>
                                     <li><a href="#">Returns</a></li>
                                     <li><a href="#">Shipping</a></li>
                                     <li><a href="#">Terms and conditions</a></li>
@@ -241,7 +241,7 @@
                                     <li><a href="cart.html">View Cart</a></li>
                                     <li><a href="#">My Wishlist</a></li>
                                     <li><a href="#">Track My Order</a></li>
-
+                                    <li><a href="#">Help</a></li>
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-6 col-lg-3 -->
@@ -251,7 +251,7 @@
 
             <div class="footer-bottom">
                 <div class="container">
-                    <p class="footer-copyright">Copyright © 2024 Paw-to-Paw | Pet Store. All Rights Reserved.</p>
+                    <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
                     <!-- End .footer-copyright -->
                     <figure class="footer-payments">
                         <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
@@ -281,10 +281,17 @@
                     <li class="active">
                         <a href="index.html">Home</a>
                     </li>
-
                     <li>
                         <a href="category.html">Shop</a>
+
                     </li>
+                    <li>
+                        <a href="product.html" class="sf-with-ul">Product</a>
+
+                    </li>
+
+
+
                 </ul>
             </nav><!-- End .mobile-nav -->
 
