@@ -1,4 +1,4 @@
-<x-mylayouts.layout-default>
+<x-mylayouts.layout-custom>
 
     @if ($order_data->isEmpty())
     <x-core.orders-empty />
@@ -50,4 +50,4 @@
         </div>
     </div>
     @endif
-</x-mylayouts.layout-default>
+</x-mylayouts.layout-custom>
