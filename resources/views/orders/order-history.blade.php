@@ -1,11 +1,20 @@
 <x-mylayouts.layout-custom>
 
+
+
+    <main class="main">
+        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+            <div class="container">
+                <h1 class="page-title">Order History<span></span></h1>
+            </div><!-- End .container -->
+        </div><!-- End .page-header -->
+    </main><!-- End .main -->
+
+
     @if ($order_data->isEmpty())
     <x-core.orders-empty />
 
     @else
-
-
 
 
     <div class="container my-5">

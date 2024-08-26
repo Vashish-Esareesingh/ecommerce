@@ -90,8 +90,9 @@
                             <i class="icon-bars"></i>
                         </button>
 
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/logo.png" alt="Molla Logo" width="105" height="25">
+                        {{-- logo --}}
+                        <a href="{{ route('home') }}" class="logo">
+                            <img src="{{ asset('template_default/images/Paw.png') }}" alt="Pet Store Logo" width="105" height="25">
                         </a>
 
                         <nav class="main-nav">
@@ -183,10 +184,10 @@
                     <div class="row">
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget widget-about">
-                                <img src="assets/images/logo-footer.png" class="footer-logo" alt="Footer Logo"
+                                <img src="{{ asset('template_default/images/Paw.png') }}" class="footer-logo" alt="Footer Logo"
                                     width="105" height="25">
-                                <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
-                                    magna eros eu erat. </p>
+                                <p>Paw to Paw is dedicated to providing top-quality pet supplies to keep your furry friends happy and healthy.
+                                    Every paw matters to us! </p>
 
                                 <div class="social-icons">
                                     <a href="#" class="social-icon" title="Facebook" target="_blank"><i
@@ -251,10 +252,10 @@
 
             <div class="footer-bottom">
                 <div class="container">
-                    <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
+                    <p class="footer-copyright">Copyright © 2024 Paw-to-Paw Pet Store. All Rights Reserved.</p>
                     <!-- End .footer-copyright -->
                     <figure class="footer-payments">
-                        <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
+                        <img src="{{ asset('template_default/images/stripe.png') }}" alt="Powered by Stripe" width="120" height="20">
                     </figure><!-- End .footer-payments -->
                 </div><!-- End .container -->
             </div><!-- End .footer-bottom -->

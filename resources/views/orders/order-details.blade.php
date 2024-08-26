@@ -1,6 +1,12 @@
 <x-mylayouts.layout-custom>
 
-
+    <main class="main">
+        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+            <div class="container">
+                <h1 class="page-title">Order Details<span></span></h1>
+            </div><!-- End .container -->
+        </div><!-- End .page-header -->
+    </main><!-- End .main -->
 
     <div class="container my-5">
         <div class="text-center">
@@ -16,7 +22,7 @@
                     <div class="card-body p-0">
                         <div class="row p-5">
                             <div class="col-md-6">
-                                <img src="http://via.placeholder.com/400x90?text=logo">
+                                <img src="{{ asset('template_default/images/paworder.png') }}" width="200" height="70">
                             </div>
 
                             <div class="col-md-6 text-right">
@@ -25,7 +31,7 @@
                             </div>
                         </div>
 
-                        <hr class="my-5">
+                        <hr class="my-4">
 
                         <div class="row pb-5 p-5">
                             <div class="col-md-6">
