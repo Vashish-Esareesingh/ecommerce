@@ -37,13 +37,13 @@ class HomeController extends Controller
     // Random products
     public function randomProducts()
     {
-        return Product::inRandomOrder()->limit(3)->get(); // Ensure this returns Product models
+        return Product::inRandomOrder()->limit(4)->get(); // Ensure this returns Product models
     }
 
     // Latest products
     public function recentProducts()
     {
-        return Product::orderBy('created_at', 'desc')->limit(3)->get(); // Ensure this returns Product models
+        return Product::orderBy('created_at', 'desc')->limit(4)->get(); // Ensure this returns Product models
     }
 
     // Best Sellers
@@ -55,7 +55,7 @@ class HomeController extends Controller
             ->select('products.id', 'products.title', 'products.image_path', 'products.image_name', 'products.price', DB::raw('SUM(order_products.quantity) as quantity_sold'))
             ->groupBy('products.id', 'products.title', 'products.image_path', 'products.image_name', 'products.price')
             ->orderByDesc('quantity_sold')
-            ->limit(3)
+            ->limit(4)
             ->get();
 
         // Convert to Product model instances

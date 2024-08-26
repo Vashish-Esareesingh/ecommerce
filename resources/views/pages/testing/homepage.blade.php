@@ -242,7 +242,7 @@
         </div>
     </section>
 
-    {{-- Best Selles --}}
+    {{-- Best Sellers --}}
     <section class="ftco-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">

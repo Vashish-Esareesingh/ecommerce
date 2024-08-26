@@ -168,7 +168,7 @@
                         <div class="product-cat">
                             <a href="#">{{ $data->category }}
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="{{ $data->getLink() }}">{{ $data->title }}"</a>
+                        <h3 class="product-title"><a href="{{ $data->getLink() }}">{{ $data->title }}</a>
                         </h3>
                         <!-- End .product-title -->
                         <div class="product-price">$
@@ -183,8 +183,7 @@
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
                 @endforeach
-
-            </div><!-- End .owl-carousel -->
+            </div>
         </div><!-- End .container -->
     </div><!-- End .page-content -->
     </main><!-- End .main -->

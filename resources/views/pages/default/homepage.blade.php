@@ -242,10 +242,10 @@
 
         <div class="mb-6"></div><!-- End .mb-6 -->
 
-        {{-- Recommender System --}}
+        {{-- Recently Added/New Arrivals --}}
         <div class="container">
             <div class="heading heading-center mb-3">
-                <h2 class="title-lg">Trendy Products</h2><!-- End .title -->
+                <h2 class="title-lg">New Arrivals</h2><!-- End .title -->
             </div><!-- End .heading -->
 
             <div class="tab-content tab-content-carousel">
@@ -279,42 +279,55 @@
                                 }'>
 
                         {{-- Product --}}
-                        <div class="product product-11 text-center">
+
+                        . @foreach ($recent as $data)
+                        <div class="product product-7 text-center">
+
                             <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-2/products/product-1-1.jpg" alt="Product image"
-                                        class="product-image">
-                                    <img src="assets/images/demos/demo-2/products/product-1-2.jpg" alt="Product image"
-                                        class="product-image-hover">
+
+                                <a href="{{ $data->getLink() }}">
+                                    <img src="{{ $data->getImage() }}" alt="Product image" class="product-image">
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                            wishlist</span></a>
                                 </div><!-- End .product-action-vertical -->
+
+                                <div class="product-action">
+                                    <a href="{{ route('cart.addfromstorepage', ['id' => $data->id]) }}"
+                                        class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
-                                <h3 class="product-title"><a href="product.html">Butler Stool Ladder</a></h3>
+                                <div class="product-cat">
+                                    <a href="#">{{ $data->category }}
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="{{ $data->getLink() }}">{{ $data->title }}</a>
+                                </h3>
                                 <!-- End .product-title -->
-                                <div class="product-price">
-                                    $251,00
+                                <div class="product-price">$
+                                    {{ $data->getPrice() }}
                                 </div><!-- End .product-price -->
+                                <div class="ratings-container">
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
+                                    <span class="ratings-text">( 2 Reviews )</span>
+                                </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
-                            <div class="product-action">
-                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                            </div><!-- End .product-action -->
                         </div><!-- End .product -->
+                        @endforeach
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
         </div><!-- End .container -->
 
-
-
-        {{-- Recommender System 2--}}
+        {{-- Random Products--}}
         <div class="container">
             <div class="heading heading-center mb-3">
-                <h2 class="title-lg">Trendy Products</h2><!-- End .title -->
+                <h2 class="title-lg">We thought you'd like</h2><!-- End .title -->
             </div><!-- End .heading -->
 
             <div class="tab-content tab-content-carousel">
@@ -322,66 +335,81 @@
                     aria-labelledby="trendy-all-link">
                     <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                         data-owl-options='{
-                    "nav": false,
-                    "dots": true,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":4,
-                            "nav": true,
-                            "dots": false
-                        }
-                    }
-                }'>
+                                    "nav": false,
+                                    "dots": true,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        },
+                                        "1200": {
+                                            "items":4,
+                                            "nav": true,
+                                            "dots": false
+                                        }
+                                    }
+                                }'>
 
                         {{-- Product --}}
-                        <div class="product product-11 text-center">
+
+                        . @foreach ($random as $data)
+                        <div class="product product-7 text-center">
+
                             <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-2/products/product-1-1.jpg" alt="Product image"
-                                        class="product-image">
-                                    <img src="assets/images/demos/demo-2/products/product-1-2.jpg" alt="Product image"
-                                        class="product-image-hover">
+
+                                <a href="{{ $data->getLink() }}">
+                                    <img src="{{ $data->getImage() }}" alt="Product image" class="product-image">
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                            wishlist</span></a>
                                 </div><!-- End .product-action-vertical -->
+
+                                <div class="product-action">
+                                    <a href="{{ route('cart.addfromstorepage', ['id' => $data->id]) }}"
+                                        class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
-                                <h3 class="product-title"><a href="product.html">Butler Stool Ladder</a></h3>
+                                <div class="product-cat">
+                                    <a href="#">{{ $data->category }}
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="{{ $data->getLink() }}">{{ $data->title }}</a>
+                                </h3>
                                 <!-- End .product-title -->
-                                <div class="product-price">
-                                    $251,00
+                                <div class="product-price">$
+                                    {{ $data->getPrice() }}
                                 </div><!-- End .product-price -->
+                                <div class="ratings-container">
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
+                                    <span class="ratings-text">( 2 Reviews )</span>
+                                </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
-                            <div class="product-action">
-                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                            </div><!-- End .product-action -->
                         </div><!-- End .product -->
+                        @endforeach
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
         </div><!-- End .container -->
 
-        {{-- Recommender System 3--}}
+        {{-- Best Sellers--}}
         <div class="container">
             <div class="heading heading-center mb-3">
-                <h2 class="title-lg">Trendy Products</h2><!-- End .title -->
+                <h2 class="title-lg">Best Sellers</h2><!-- End .title -->
             </div><!-- End .heading -->
 
             <div class="tab-content tab-content-carousel">
@@ -389,62 +417,76 @@
                     aria-labelledby="trendy-all-link">
                     <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                         data-owl-options='{
-                            "nav": false,
-                            "dots": true,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":2
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                },
-                                "1200": {
-                                    "items":4,
-                                    "nav": true,
-                                    "dots": false
-                                }
-                            }
-                        }'>
+                                    "nav": false,
+                                    "dots": true,
+                                    "margin": 20,
+                                    "loop": false,
+                                    "responsive": {
+                                        "0": {
+                                            "items":2
+                                        },
+                                        "480": {
+                                            "items":2
+                                        },
+                                        "768": {
+                                            "items":3
+                                        },
+                                        "992": {
+                                            "items":4
+                                        },
+                                        "1200": {
+                                            "items":4,
+                                            "nav": true,
+                                            "dots": false
+                                        }
+                                    }
+                                }'>
 
                         {{-- Product --}}
-                        <div class="product product-11 text-center">
+
+                        . @foreach ($best_selling_products as $data)
+                        <div class="product product-7 text-center">
+
                             <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-2/products/product-1-1.jpg" alt="Product image"
-                                        class="product-image">
-                                    <img src="assets/images/demos/demo-2/products/product-1-2.jpg" alt="Product image"
-                                        class="product-image-hover">
+
+                                <a href="{{ $data->getLink() }}">
+                                    <img src="{{ $data->getImage() }}" alt="Product image" class="product-image">
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                            wishlist</span></a>
                                 </div><!-- End .product-action-vertical -->
+
+                                <div class="product-action">
+                                    <a href="{{ route('cart.addfromstorepage', ['id' => $data->id]) }}"
+                                        class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
-                                <h3 class="product-title"><a href="product.html">Butler Stool Ladder</a></h3>
+                                <div class="product-cat">
+                                    <a href="#">{{ $data->category }}
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="{{ $data->getLink() }}">{{ $data->title }}</a>
+                                </h3>
                                 <!-- End .product-title -->
-                                <div class="product-price">
-                                    $251,00
+                                <div class="product-price">$
+                                    {{ $data->getPrice() }}
                                 </div><!-- End .product-price -->
+                                <div class="ratings-container">
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
+                                    <span class="ratings-text">( 2 Reviews )</span>
+                                </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
-                            <div class="product-action">
-                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                            </div><!-- End .product-action -->
                         </div><!-- End .product -->
+                        @endforeach
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
         </div><!-- End .container -->
-
 
         {{-- Hero Body --}}
         <div class="container">
@@ -457,7 +499,7 @@
                         </span>
                         <div class="icon-box-content">
                             <h3 class="icon-box-title">Payment & Delivery</h3><!-- End .icon-box-title -->
-                            <p>Free shipping for orders over $50</p>
+                            <p>Shipping as cheap as $10</p>
                         </div><!-- End .icon-box-content -->
                     </div><!-- End .icon-box -->
                 </div><!-- End .col-lg-4 col-sm-6 -->
@@ -481,7 +523,7 @@
                         </span>
                         <div class="icon-box-content">
                             <h3 class="icon-box-title">Quality Support</h3><!-- End .icon-box-title -->
-                            <p>Alway online feedback 24/7</p>
+                            <p>24/7 Chatbot</p>
                         </div><!-- End .icon-box-content -->
                     </div><!-- End .icon-box -->
                 </div><!-- End .col-lg-4 col-sm-6 -->
@@ -491,24 +533,5 @@
 
     </main><!-- End .main -->
 
-
-
-
-    <!-- Plugins JS File -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/superfish.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-    </body>
-
-
-    <!-- molla/index-2.html  22 Nov 2019 09:55:42 GMT -->
-
-    </html>
 
 </x-mylayouts.layout-custom>
