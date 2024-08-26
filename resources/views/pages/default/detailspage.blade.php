@@ -31,12 +31,7 @@
                             <br>
                             <h1 class="product-title">{{ $data->title }}</h1>
 
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 80%;"></div>
-                                </div>
-                                <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
-                            </div>
+                            @include('pages.additional.reviews.reviews-stars-custom')
 
                             <div class="product-price">
                                 ${{ $data->getPrice() }}
@@ -174,12 +169,9 @@
                         <div class="product-price">$
                             {{ $data->getPrice() }}
                         </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 2 Reviews )</span>
-                        </div><!-- End .rating-container -->
+
+                        @include('pages.additional.reviews.reviews-stars-custom')
+
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
                 @endforeach

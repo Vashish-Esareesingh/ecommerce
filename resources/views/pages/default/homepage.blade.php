@@ -280,7 +280,7 @@
 
                         {{-- Product --}}
 
-                        . @foreach ($recent as $data)
+                        @foreach ($recent as $data)
                         <div class="product product-7 text-center">
 
                             <figure class="product-media">
@@ -310,12 +310,9 @@
                                 <div class="product-price">$
                                     {{ $data->getPrice() }}
                                 </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 Reviews )</span>
-                                </div><!-- End .rating-container -->
+
+                                @include('pages.additional.reviews.reviews-stars-custom')
+
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
                         @endforeach
@@ -362,7 +359,7 @@
 
                         {{-- Product --}}
 
-                        . @foreach ($random as $data)
+                        @foreach ($random as $data)
                         <div class="product product-7 text-center">
 
                             <figure class="product-media">
@@ -392,12 +389,9 @@
                                 <div class="product-price">$
                                     {{ $data->getPrice() }}
                                 </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 Reviews )</span>
-                                </div><!-- End .rating-container -->
+
+                                @include('pages.additional.reviews.reviews-stars-custom')
+
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
                         @endforeach
@@ -444,7 +438,7 @@
 
                         {{-- Product --}}
 
-                        . @foreach ($best_selling_products as $data)
+                        @foreach ($best_selling_products as $data)
                         <div class="product product-7 text-center">
 
                             <figure class="product-media">
@@ -474,12 +468,9 @@
                                 <div class="product-price">$
                                     {{ $data->getPrice() }}
                                 </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 Reviews )</span>
-                                </div><!-- End .rating-container -->
+
+                                @include('pages.additional.reviews.reviews-stars-custom')
+
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
                         @endforeach

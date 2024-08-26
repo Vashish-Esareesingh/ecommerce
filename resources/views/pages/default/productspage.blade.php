@@ -66,13 +66,8 @@
                                     <div class="product-price">
                                         ${{ $data->getPrice() }}
                                     </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 2 Reviews )</span>
-                                    </div><!-- End .rating-container -->
 
+                                    @include('pages.additional.reviews.reviews-stars-custom')
 
                                 </div><!-- End .product-body -->
                             </div><!-- End .product -->
