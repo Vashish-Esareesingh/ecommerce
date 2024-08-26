@@ -17,12 +17,13 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="toolbox">
-                    <div class="toolbox-left">
-                        <div class="toolbox-info">
-                            <br>
-                            Showing <span>9 of 56</span> Products
-                        </div><!-- End .toolbox-info -->
-                    </div><!-- End .toolbox-left -->
+                    <div class="toolbox-info">
+                        <br>
+                        Showing
+                        <span>{{ $product_data->firstItem() }} - {{ $product_data->lastItem() }} of {{
+                            $product_data->total() }}</span>
+                        Products
+                    </div><!-- End .toolbox-info -->
                 </div><!-- End .toolbox -->
 
 
@@ -78,27 +79,55 @@
                     </div><!-- End .row -->
                 </div><!-- End .products -->
 
-                {{-- Pagination --}}
+                {{-- Page Navigation --}}
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
+                        {{-- Previous Page Link --}}
+                        @if ($product_data->onFirstPage())
                         <li class="page-item disabled">
                             <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1"
                                 aria-disabled="true">
                                 <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
                             </a>
                         </li>
-                        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item-total">of 6</li>
+                        @else
                         <li class="page-item">
-                            <a class="page-link page-link-next" href="#" aria-label="Next">
+                            <a class="page-link page-link-prev" href="{{ $product_data->previousPageUrl() }}"
+                                aria-label="Previous">
+                                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+                            </a>
+                        </li>
+                        @endif
+
+                        {{-- Pagination Elements --}}
+                        @foreach ($product_data->links()->elements[0] as $page => $url)
+                        @if ($page == $product_data->currentPage())
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">{{ $page }}</a>
+                        </li>
+                        @else
+                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                        @endif
+                        @endforeach
+
+                        {{-- Next Page Link --}}
+                        @if ($product_data->hasMorePages())
+                        <li class="page-item">
+                            <a class="page-link page-link-next" href="{{ $product_data->nextPageUrl() }}"
+                                aria-label="Next">
                                 Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
                             </a>
                         </li>
+                        @else
+                        <li class="page-item disabled">
+                            <a class="page-link page-link-next" href="#" aria-label="Next" tabindex="-1"
+                                aria-disabled="true">
+                                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                            </a>
+                        </li>
+                        @endif
                     </ul>
-                </nav> {{-- Pagination Ends --}}
-
+                </nav>
             </div><!-- End .col-lg-9 -->
 
 

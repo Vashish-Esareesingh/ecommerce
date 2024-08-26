@@ -104,8 +104,7 @@
             </div>
         </div>
 
-        <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank"
-                href="http://totoprayogo.com">totoprayogo.com</a></div>
+        <div class="text-light mt-5 mb-5 text-center small"> : <a class="text-light" target="_blank" href=""></a></div>
 
     </div>
 

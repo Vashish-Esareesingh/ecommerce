@@ -19,14 +19,17 @@ class ProductController extends Controller
 
         // Retrieve products from products table
         $product_data = Product::withPrices()->get();
-        $product_data = ProductFilter::withPrices()->filter($values)->get();
+        $product_data = ProductFilter::withPrices()
+        ->filter($values)
+        ->paginate(8);
+
+
+
         $category_data = Product::distinct('category')->pluck('category');
 
         // dd($product_data);
 
         // Returns data to views/ productspage
-        // return view('pages.default.productspage', compact('product_data'));
-
         return view('pages.default.productspage', compact('product_data', 'category_data'));
     }
 }
