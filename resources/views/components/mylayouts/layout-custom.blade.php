@@ -140,13 +140,15 @@
 
                     <div class="header-right">
                         <div class="header-search">
-                            <a href="#" class="search-toggle" role="button" title="Search"><i
-                                    class="icon-search"></i></a>
-                            <form action="#" method="get">
+                            <a href="#" class="search-toggle" role="button" title="Search">
+                                <i class="icon-search"></i>
+                            </a>
+                            <form action="{{ route('store.index') }}" method="GET">
                                 <div class="header-search-wrapper">
-                                    <label for="q" class="sr-only">Search</label>
-                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search in..."
-                                        required>
+                                    <label for="search" class="sr-only">Search</label>
+                                    <input type="search" class="form-control" name="search" id="search" placeholder="Search in..."
+                                        value="{{ old('search') }}" required>
+                                    <button class="btn btn-primary" type="submit" style="display: none;"></button>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
                         </div><!-- End .header-search -->
