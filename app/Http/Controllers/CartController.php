@@ -41,6 +41,7 @@ class CartController extends Controller
         // Remove product from the cart
         Cart::destroy($id);
 
+        // Sends user to the cart page | Product Removed
         return redirect()->route('cart.index')->with('message', 'Product removed from cart');
     }
 
@@ -52,7 +53,7 @@ class CartController extends Controller
             ['quantity' => DB::raw('quantity +'. 1), 'updated' => now()]
         );
 
-        // Sends user to the cart page
+        // Sends user to the cart page | Product Added
         return redirect()->route('cart.index')->with('message', 'Product added to cart');
     }
 }

@@ -27,7 +27,7 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
-                                    <th></th>
+                                    <th>Remove</th>
                                 </tr>
                             </thead>
 
@@ -38,13 +38,13 @@
                                     <td class="product-col">
                                         <div class="product">
                                             <figure class="product-media">
-                                                <a href="#">
+                                                <a href="{{ $data->getLink() }}">
                                                     <img src="{{ $data->getImage() }}" alt="Product image">
                                                 </a>
                                             </figure>
 
                                             <h3 class="product-title">
-                                                <a href="#">{{ $data->title }}</a>
+                                                <a href="{{ $data->getLink() }}">{{ $data->title }}</a>
                                             </h3><!-- End .product-title -->
                                         </div><!-- End .product -->
                                     </td>
@@ -68,10 +68,7 @@
                                             <button class="btn-remove"><i class="icon-close"></i></button>
                                         </form>
                                     </td>
-
                                 </tr>
-
-
                             </tbody>
                             @endforeach
                         </table><!-- End .table table-cart -->
