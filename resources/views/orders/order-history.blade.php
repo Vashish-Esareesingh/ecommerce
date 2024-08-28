@@ -37,8 +37,6 @@
                         @php($count = 1)
                         @foreach ($order_data as $order)
 
-
-
                         <tr>
                             <td>{{ $count++ }}</td>
                             <td>{{ $order->order_no }}</td>

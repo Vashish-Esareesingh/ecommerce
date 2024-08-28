@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
-    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-TileColor" content="#cc9966">Z
     <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <!-- Plugins CSS File -->
@@ -34,8 +34,14 @@
 
     {{-- Chatbot --}}
     <script>
-        (function(w, d) { w.CollectId = "66c00fc0c7ec3e97bdf85084"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);
+        (function(w, d) { w.CollectId = "66c00fc0c7ec3e97bdf85084";
+        var h = d.head || d.getElementsByTagName("head")[0];
+        var s = d.createElement("script"); s.setAttribute("type", "text/javascript");
+        s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js");
+        h.appendChild(s); })
+        (window, document);
     </script>
+
 </head>
 
 <body>
@@ -272,9 +278,9 @@
         <div class="mobile-menu-wrapper">
             <span class="mobile-menu-close"><i class="icon-close"></i></span>
 
-            <form action="#" method="get" class="mobile-search">
+            <form action="{{ route('store.index') }}" method="get" class="mobile-search">
                 <label for="mobile-search" class="sr-only">Search</label>
-                <input type="search" class="form-control" name="mobile-search" id="mobile-search"
+                <input type="search" class="form-control" name="search" id="mobile-search"
                     placeholder="Search in..." required>
                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
             </form>
@@ -282,16 +288,35 @@
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
                     <li class="active">
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li>
-                        <a href="category.html">Shop</a>
+                        <a href="{{ route('shop.index') }}">Shop</a>
 
                     </li>
+
+                    @auth
                     <li>
-                        <a href="product.html" class="sf-with-ul">Product</a>
+                        <a href="{{ route('order-history.index') }}" class="sf-with-ul">Orders</a>
 
                     </li>
+
+                    <li>
+                        <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
+                    </li>
+
+                    @endauth
+
+                    @guest
+                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
+                    <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a>
+                    </li>
+                    @endguest
 
 
 

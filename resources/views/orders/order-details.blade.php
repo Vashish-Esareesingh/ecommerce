@@ -37,9 +37,9 @@
                             <div class="col-md-6">
                                 <p class="font-weight-bold mb-4">Customer Information</p>
                                 <p class="mb-1">{{ $user->name }}</p>
-                                <p>{{ $address->line_1 }}</p>
-                                <p class="mb-1">{{ $address->line_2 }}</p>
-                                <p class="mb-1">{{ $address->contact }}</p>
+                                <p></p>
+                                <p class="mb-1"></p>
+                                <p class="mb-1"><a>(868)</a>{{ $address->contact }}</p>
                             </div>
 
                             <div class="col-md-6 text-right">
@@ -63,8 +63,8 @@
                                             <th class="border-0 text-uppercase small font-weight-bold">Total</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
 
+                                    <tbody>
 
                                         @php( $count = 1)
                                         @foreach ($product_data as $product)
@@ -83,6 +83,7 @@
 
                                         @endforeach
                                     </tbody>
+                                    
                                 </table>
                             </div>
                         </div>

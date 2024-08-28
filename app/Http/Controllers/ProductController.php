@@ -21,7 +21,7 @@ class ProductController extends Controller
         $product_data = Product::withPrices()->get();
         $product_data = ProductFilter::withPrices()
         ->filter($values)
-        ->paginate(8);
+        ->paginate(8); // Paginate results to show 8 products per page
 
 
 
