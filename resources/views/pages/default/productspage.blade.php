@@ -170,7 +170,7 @@
                                 Sort By
                             </a>
                         </h3><!-- End .widget-title -->
-
+                        
                         <div class="collapse show" id="widget-2">
                             <div class="widget-body">
                                 <div class="filter-items">
