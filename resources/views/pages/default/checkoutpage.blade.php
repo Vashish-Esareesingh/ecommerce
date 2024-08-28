@@ -37,11 +37,7 @@
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                         <select name="" id="" class="form-control">
                                             <option value="">Trinidad</option>
-                                            <option value="">Italy</option>
-                                            <option value="">Philippines</option>
-                                            <option value="">South Korea</option>
-                                            <option value="">Hongkong</option>
-                                            <option value="">Japan</option>
+                                            <option value="">Tobago</option>
                                         </select>
                                     </div>
                                 </div>
@@ -89,8 +85,7 @@
                             <div class="col-md-12">
                                 <div class="form-group mt-4">
                                     <div class="radio">
-                                        <label class="mr-3"><input type="radio" name="optradio"> Create an Account?
-                                        </label>
+
                                         <label><input type="radio" name="optradio"> Ship to different address</label>
                                     </div>
                                 </div>
@@ -108,31 +103,31 @@
                                 <h3 class="billing-heading mb-4">Cart Total</h3>
                                 <p class="d-flex">
                                     <span>Subtotal</span>
-                                    <span>${{ $cart_data->getSubtotal() }}</span>
+                                    <span>${{ CustomHelper::formatPrice($cart_data->getSubtotal()) }}</span>
                                 </p>
-                                @foreach ( $shipping_data as $data )
+
                                 <p class="d-flex">
-                                    <span>{{ $data->title }}</span>
-                                    <span>+${{ CustomHelper::formatPrice($data->price) }}</span>
+                                    <span> <p>Discount Applied: {{ $points_helper->getPointsDiscountApplied() }}%</p></span>
+
                                 </p>
-                                @endforeach
+
                                 <hr>
                                 <p class="d-flex total-price">
-                                    <span>Estimate</span>
+                                    <span>Estimated Total</span>
 
 
                                     @if ($points_helper->isDiscountApplied())
+
                                     <span>${{ CustomHelper::formatPrice($points_helper->calculateDiscountedPrice())
                                         }}</span>
                                     @else
                                     <span>${{ CustomHelper::formatPrice($cart_data->getSubtotal()) }}</span>
                                     @endif
 
+                                    <p style="color: red;">Note that: Shipping Cost is not Applied</p>
                                 </p>
                             </div>
                         </div>
-
-
 
 
 
@@ -159,7 +154,7 @@
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="radio">
-                                            <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+                                            <label><input type="radio" name="optradio" class="mr-2"> Stripe</label>
                                         </div>
                                     </div>
                                 </div>

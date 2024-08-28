@@ -83,7 +83,7 @@ class ProductFilter extends Product
     }
 
     /**
-     * Undocumented function.
+     * By Category function.
      *
      * @param [type] $query
      * @param [type] $value
@@ -98,7 +98,7 @@ class ProductFilter extends Product
     }
 
     /**
-     * Undocumented function.
+     * Sort By function.
      *
      * @param [type] $query
      * @param [type] $value
