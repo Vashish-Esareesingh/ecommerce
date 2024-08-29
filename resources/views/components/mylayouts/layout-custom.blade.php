@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
-    <meta name="msapplication-TileColor" content="#cc9966">Z
+    <meta name="msapplication-TileColor" content="#cc9966">
     <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <!-- Plugins CSS File -->
@@ -78,8 +78,8 @@
                                 <a href="#">Links</a>
                                 <ul>
                                     <li><a href="tel:#"><i class="icon-phone"></i>Call: +1-868-493-789</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">Contact Us</a></li>
                             </li>
                         </ul>
                         </li>
@@ -217,11 +217,11 @@
                                 <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
 
                                 <ul class="widget-list">
-                                    <li><a href="about.html">About Molla</a></li>
-                                    <li><a href="#">How to shop on Molla</a></li>
-                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="about.html">About Paw-to-Paw</a></li>
+                                    <li><a href="#">How to shop on Paw-to-Paw</a></li>
+                                    <li><a href="#">FAQs</a></li>
                                     <li><a href="contact.html">Contact us</a></li>
-                                    <li><a href="login.html">Log in</a></li>
+
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-6 col-lg-3 -->
@@ -243,14 +243,14 @@
 
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget">
-                                <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+                                <h4 class="widget-title">Quick Links</h4><!-- End .widget-title -->
 
                                 <ul class="widget-list">
-                                    <li><a href="#">Sign In</a></li>
-                                    <li><a href="cart.html">View Cart</a></li>
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('cart.index') }}">View Cart</a></li>
                                     <li><a href="#">My Wishlist</a></li>
-                                    <li><a href="#">Track My Order</a></li>
-                                    <li><a href="#">Help</a></li>
+                                    <li><a href="{{ route('order-history.index') }}">Order History</a></li>
+                                    <li><a href="{{ route('shop.index') }}">Store</a></li>
                                 </ul><!-- End .widget-list -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-sm-6 col-lg-3 -->
