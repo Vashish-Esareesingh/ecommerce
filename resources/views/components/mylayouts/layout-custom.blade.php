@@ -98,7 +98,8 @@
 
                         {{-- logo --}}
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('template_default/images/Paw.png') }}" alt="Pet Store Logo" width="105" height="25">
+                            <img src="{{ asset('template_default/images/Paw.png') }}" alt="Pet Store Logo" width="105"
+                                height="25">
                         </a>
 
                         <nav class="main-nav">
@@ -107,10 +108,9 @@
                                     <a href="{{ route('home') }}" class="sf-with-ul">Home</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('shop.index') }}" class="sf-with-ul">Shop</a>
+                                    <a href="{{ route('shop.index') }}" class="sf-with-ul">Store</a>
 
                                 </li>
-
 
 
 
@@ -152,8 +152,8 @@
                             <form action="{{ route('store.index') }}" method="GET">
                                 <div class="header-search-wrapper">
                                     <label for="search" class="sr-only">Search</label>
-                                    <input type="search" class="form-control" name="search" id="search" placeholder="Search in..."
-                                        value="{{ old('search') }}" required>
+                                    <input type="search" class="form-control" name="search" id="search"
+                                        placeholder="Search in..." value="{{ old('search') }}" required>
                                     <button class="btn btn-primary" type="submit" style="display: none;"></button>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
@@ -192,9 +192,10 @@
                     <div class="row">
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget widget-about">
-                                <img src="{{ asset('template_default/images/Paw.png') }}" class="footer-logo" alt="Footer Logo"
-                                    width="105" height="25">
-                                <p>Paw to Paw is dedicated to providing top-quality pet supplies to keep your furry friends happy and healthy.
+                                <img src="{{ asset('template_default/images/Paw.png') }}" class="footer-logo"
+                                    alt="Footer Logo" width="105" height="25">
+                                <p>Paw to Paw is dedicated to providing top-quality pet supplies to keep your furry
+                                    friends happy and healthy.
                                     Every paw matters to us! </p>
 
                                 <div class="social-icons">
@@ -263,7 +264,8 @@
                     <p class="footer-copyright">Copyright © 2024 Paw-to-Paw Pet Store. All Rights Reserved.</p>
                     <!-- End .footer-copyright -->
                     <figure class="footer-payments">
-                        <img src="{{ asset('template_default/images/stripe.png') }}" alt="Powered by Stripe" width="120" height="20">
+                        <img src="{{ asset('template_default/images/stripe.png') }}" alt="Powered by Stripe" width="120"
+                            height="20">
                     </figure><!-- End .footer-payments -->
                 </div><!-- End .container -->
             </div><!-- End .footer-bottom -->
@@ -280,8 +282,8 @@
 
             <form action="{{ route('store.index') }}" method="get" class="mobile-search">
                 <label for="mobile-search" class="sr-only">Search</label>
-                <input type="search" class="form-control" name="search" id="mobile-search"
-                    placeholder="Search in..." required>
+                <input type="search" class="form-control" name="search" id="mobile-search" placeholder="Search in..."
+                    required>
                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
             </form>
 
