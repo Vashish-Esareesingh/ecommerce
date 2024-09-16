@@ -41,7 +41,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <button class="btn btn-primary">Apply</button>
-                            <a href="{{ route('store.index') }}" class="btn btn-outline-primary-2">Clear</a>
+                            <a href="{{ route('store.index') }}" class="btn btn-outline-danger">Clear</a>
                         </div>
                     </div>
                 </div>

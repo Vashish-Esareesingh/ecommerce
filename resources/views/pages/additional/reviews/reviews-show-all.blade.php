@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="verified">verified:</label>
+                                <label for="verified">Verified:</label>
                                 <select class="form-control" id="verified" name="verified">
                                     <option value="all">All Reviews</option>
                                     <option value="verified">Verified Purchased</option>
@@ -68,8 +68,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <button class="btn btn-success">Apply</button>
-                                <a href="#" class="btn btn-danger">Clear</a>
+                                <button class="btn btn-primary">Apply</button>
+                                <a href="#" class="btn btn-outline-danger">Clear</a>
                             </div>
                         </div>
                     </div>
